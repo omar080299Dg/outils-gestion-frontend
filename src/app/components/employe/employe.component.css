@@ -23,6 +23,7 @@
   outline: none;
   border-radius: 5px;
   border: none;
+  padding: 5px;
 }
 .employe-navbar .search button{
   height: 45px;
@@ -35,6 +36,8 @@
   border: none;
   font-size: 18px;
   padding: 10px;
+  cursor: pointer;
+
 
 
 }

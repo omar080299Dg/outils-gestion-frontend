@@ -1,8 +1,8 @@
 <div class="employe-navbar">
 <div class="title">Employes</div>
 <div class="search">
-  <input type="text" name="search">
-  <button>search</button>
+  <input type="text" name="search" >
+  <button onclick="alert('Hello')">search</button>
 </div>
 <div class="actions">
   <button>Ajouter employe</button>
@@ -16,25 +16,25 @@
 
       <!-- Position Column -->
       <ng-container matColumnDef="prenom">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <th mat-header-cell *matHeaderCellDef> Prénom </th>
         <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="id_employe">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <th mat-header-cell *matHeaderCellDef> Employé ID </th>
         <td mat-cell *matCellDef="let element"> {{element.id_employe}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
         <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="courriel">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+        <th mat-header-cell *matHeaderCellDef> Courriel </th>
         <td mat-cell *matCellDef="let element"> {{element.courriel}} </td>
       </ng-container>
 
