@@ -1,0 +1,60 @@
+*{
+  padding: auto;
+}
+.employe-navbar{
+  background-color: #669bbc;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.employe-navbar  .title{
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+.employe-navbar .search{
+  width: 50%;
+
+}
+.employe-navbar .search input{
+  width: 70%;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+.employe-navbar .search button{
+  height: 45px;
+  width: 100px;
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+
+
+}
+.employe-navbar .actions button{
+  outline: none;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  height: 40px;
+  padding: 10px;
+
+}
+.employe-table {
+  font-size: 40px;
+  padding: 40px;
+  font-weight: bold;
+}
+.employe-table .matColumnDef{
+  font-weight: bold;
+}
