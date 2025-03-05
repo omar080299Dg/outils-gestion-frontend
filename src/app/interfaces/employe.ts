@@ -3,11 +3,11 @@ export interface Employe{
   nom:string,
   prenom:string,
   courriel:string,
-  date_inscrption:string,
+  date_inscription:string,
   login:string,
   rais_ajust_temps:string,
   mdp:string,
-  ajustement_temp:string,
+  ajustement_temps:number,
   actif?:boolean
 
 }

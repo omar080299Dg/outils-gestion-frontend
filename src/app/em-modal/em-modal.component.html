@@ -1,0 +1,45 @@
+<div class="em-form">
+  <div class="title">
+    <p>Ajouter un Employé </p>
+  </div>
+  <div class="form">
+    <form action="" >
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput  required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Prenom</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Courriel</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ajustement Temps</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Date Inscription </mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+    </form>
+
+
+  </div>
+  <div class="but">
+    <button mat-raised-button>Save
+    </button>
+
+  </div>
+</div>

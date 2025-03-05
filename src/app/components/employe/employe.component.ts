@@ -3,30 +3,38 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Employe } from 'src/app/interfaces/employe';
 import { EmployesService } from 'src/app/services/employes.service';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { EmModalComponent } from 'src/app/em-modal/em-modal.component';
+
+
+
 
 
 @Component({
-  standalone:true,
+  standalone: true,
   selector: 'app-employe',
   templateUrl: './employe.component.html',
   styleUrls: ['./employe.component.css'],
-  imports:[
-    MatMenuModule,
+  imports:[MatMenuModule,
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
     MatPaginatorModule,
-
+    CommonModule,
+    MatDialogModule
   ]
+
 })
 
 export class EmployeComponent implements OnInit {
-  public employees: Employe[] = []
-  displayedColumns: string[] = ['id_employe', 'nom', 'prenom', 'courriel'];
 
-  constructor(private employeService: EmployesService){}
+  public employees: Employe[] = []
+  displayedColumns: string[] = ['id_employe', 'nom', 'prenom', 'courriel','date_inscrption','rais_ajust_temps','ajustement_temp','actif'];
+
+  constructor(private employeService: EmployesService,public dialog: MatDialog){}
 
   ngOnInit(): void {
       this.getAllEmploye()
@@ -47,7 +55,21 @@ export class EmployeComponent implements OnInit {
 
     )
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+   console.log("filtering")
+  }
+  openDialog() {
+   this.dialog.open(EmModalComponent,  {
+      width: '500px',
+      height: '490px',
+      panelClass: 'custom-dialog-container'
+    });
+  }
 
 }
+
+
 
 
