@@ -8,6 +8,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { EmModalComponent } from 'src/app/em-modal/em-modal.component';
+import { Router } from '@angular/router';
 
 
 
@@ -34,7 +35,7 @@ export class EmployeComponent implements OnInit {
   public employees: Employe[] = []
   displayedColumns: string[] = ['id_employe', 'nom', 'prenom', 'courriel','date_inscrption','rais_ajust_temps','ajustement_temp','actif'];
 
-  constructor(private employeService: EmployesService,public dialog: MatDialog){}
+  constructor(private employeService: EmployesService,public dialog: MatDialog, private router:Router){}
 
   ngOnInit(): void {
       this.getAllEmploye()
@@ -65,7 +66,14 @@ export class EmployeComponent implements OnInit {
       width: '500px',
       height: '490px',
       panelClass: 'custom-dialog-container'
-    });
+    }),
+    this.dialog.afterAllClosed.subscribe(result =>{
+     this.getAllEmploye()
+    })
+  }
+  goToDetails(employeId:string){
+    console.log(employeId)
+    this.router.navigate(['employee', employeId]);
   }
 
 }

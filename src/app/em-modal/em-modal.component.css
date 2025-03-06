@@ -22,3 +22,6 @@
 .em-form .form mat-form-field{
  margin: 2px;
 }
+.em-form .but{
+  height: 50px;
+}

@@ -3,30 +3,30 @@
     <p>Ajouter un Employé </p>
   </div>
   <div class="form">
-    <form action="" >
+    <form   [formGroup]="registerForm" (keydown.tab)="$event.stopPropagation()" (keydown.shift.tab)="$event.stopPropagation()">
       <mat-form-field>
         <mat-label>Nom</mat-label>
-        <input matInput  required>
+        <input matInput formControlName="nom" >
       </mat-form-field>
       <mat-form-field>
         <mat-label>Prenom</mat-label>
-        <input matInput>
+        <input matInput formControlName="prenom" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Courriel</mat-label>
-        <input matInput>
+        <input matInput formControlName="courriel" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Ajustement Temps</mat-label>
-        <input matInput>
+        <input type="number"  matInput formControlName="ajustement_temps" >
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
+        <mat-label>rais_ajust_temps</mat-label>
+        <textarea matInput formControlName="rais_ajust_temps" ></textarea>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Date Inscription </mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="date_inscription" required>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -38,7 +38,7 @@
 
   </div>
   <div class="but">
-    <button mat-raised-button>Save
+    <button mat-raised-button (click)="onRegister()"> Enregister
     </button>
 
   </div>

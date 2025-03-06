@@ -1,0 +1,57 @@
+*{
+  padding: auto;
+}
+.employe-navbar{
+  background-color: #669bbc;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.employe-navbar  .title{
+  font-size: 55px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+.employe-navbar .actions{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  height: 90%;
+}
+.employe-navbar .actions button {
+  height: 60px;
+  width: 120px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+}
+.profile-body{
+  background-color: #eef2f4;
+  margin: 2%;
+  box-shadow: 5px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-around;
+}
+.profile-body .inf span{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-body .inf p{
+  font-size: 20px;
+  color: #669bbc;
+  font-weight: bold;
+  text-align: left;
+  width: 50%;
+
+}
+
