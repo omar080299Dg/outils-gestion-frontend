@@ -25,4 +25,8 @@ export class EmployesService {
     return this.http.get<EmployeProfile>(`${this.apiUrl}/${employeId}`)
   }
 
+  updateStatut(employeId:string, {statut }:any):Observable<Employe>{
+    return this.http.put<Employe>(`${this.apiUrl}/${employeId}`,statut)
+  }
+
 }

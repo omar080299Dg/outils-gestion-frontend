@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployesService } from '../services/employes.service';
 import { EmployeProfile } from '../interfaces/employe';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateStatutComponent } from '../update-statut/update-statut.component';
 
 @Component({
   selector: 'app-employe-profile',
@@ -11,7 +13,7 @@ import { EmployeProfile } from '../interfaces/employe';
 export class EmployeProfileComponent  implements OnInit{
   employeeId!: string;
   employeeInfo!:EmployeProfile
-  constructor(private route: ActivatedRoute, private employeService:EmployesService) {}
+  constructor(private route: ActivatedRoute, private employeService:EmployesService,private dialog:MatDialog) {}
   ngOnInit() {
     this.employeeId = this.route.snapshot.paramMap.get('id') ?? '';
     this.getmployeInfo()
@@ -27,6 +29,17 @@ export class EmployeProfileComponent  implements OnInit{
         console.log("eroor",error)
       }
     )
+  }
+
+  openDialog() {
+   this.dialog.open(UpdateStatutComponent,  {
+      width: '300px',
+      height: '290px',
+      panelClass: 'custom-dialog-container'
+    }),
+    this.dialog.afterAllClosed.subscribe(result =>{
+     this.employeService.getAllEmploye()
+    })
   }
 
 }

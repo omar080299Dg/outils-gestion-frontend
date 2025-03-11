@@ -29,7 +29,7 @@
   cursor: pointer;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   padding: 5px;
 }
 .profile-body{
@@ -42,12 +42,12 @@
 }
 .profile-body .inf span{
   font-family: 'Courier New', Courier, monospace;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .profile-body .inf p{
-  font-size: 20px;
+  font-size: 15px;
   color: #669bbc;
   font-weight: bold;
   text-align: left;

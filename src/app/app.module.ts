@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconSnackBarComponent } from './icon-snack-bar/icon-snack-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeProfileComponent } from './employe-profile/employe-profile.component';
+import { UpdateStatutComponent } from './update-statut/update-statut.component';
 
 
 
