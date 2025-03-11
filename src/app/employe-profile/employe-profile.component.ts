@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployesService } from '../services/employes.service';
 import { EmployeProfile } from '../interfaces/employe';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { UpdateStatutComponent } from '../update-statut/update-statut.component';
 
 @Component({
@@ -14,6 +14,7 @@ export class EmployeProfileComponent  implements OnInit{
   employeeId!: string;
   employeeInfo!:EmployeProfile
   constructor(private route: ActivatedRoute, private employeService:EmployesService,private dialog:MatDialog) {}
+
   ngOnInit() {
     this.employeeId = this.route.snapshot.paramMap.get('id') ?? '';
     this.getmployeInfo()
@@ -35,10 +36,13 @@ export class EmployeProfileComponent  implements OnInit{
    this.dialog.open(UpdateStatutComponent,  {
       width: '300px',
       height: '290px',
-      panelClass: 'custom-dialog-container'
+      panelClass: 'custom-dialog-container',
+      data:{
+        employeId:this.employeeId
+      }
     }),
     this.dialog.afterAllClosed.subscribe(result =>{
-     this.employeService.getAllEmploye()
+      window.location.reload();
     })
   }
 

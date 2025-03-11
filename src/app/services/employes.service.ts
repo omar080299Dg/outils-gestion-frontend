@@ -24,9 +24,10 @@ export class EmployesService {
   getEmployeById(employeId:string):Observable<EmployeProfile>{
     return this.http.get<EmployeProfile>(`${this.apiUrl}/${employeId}`)
   }
-
-  updateStatut(employeId:string, {statut }:any):Observable<Employe>{
-    return this.http.put<Employe>(`${this.apiUrl}/${employeId}`,statut)
+  updateStatut(employeId:string, statut: { statut: number }):Observable<Employe>{
+    console.log(statut)
+    return this.http.put<any>(`${this.apiUrl}/${employeId}`,statut)
   }
+
 
 }
