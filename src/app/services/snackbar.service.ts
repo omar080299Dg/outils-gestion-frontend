@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { IconSnackBarComponent } from '../icon-snack-bar/icon-snack-bar.component';
+import { IconSnackBarComponent } from '../components/icon-snack-bar/icon-snack-bar.component';
 
 type SnackBarDataIcon = 'info' | 'warning' | 'error';
 interface SnackBarData {
@@ -17,7 +17,6 @@ export class SnackBarService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  /** Open a Material snackbar, providing message, optional Material icon and optional duration in seconds */
   openSnackBar(message: string, icon: SnackBarDataIcon = 'info', duration = this.snackBarDurationInSeconds) {
     const config = new MatSnackBarConfig();
     const data: SnackBarData = {
@@ -31,7 +30,6 @@ export class SnackBarService {
       case 'error': { config.panelClass = ['error-dialog']; break; }
     }
     this.snackBar.openFromComponent(IconSnackBarComponent, config);
-    // this.snackBar.open(message, nulconfig);
   }
 
 }

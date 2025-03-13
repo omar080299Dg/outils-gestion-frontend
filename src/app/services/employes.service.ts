@@ -9,24 +9,24 @@ import { Employe, EmployeBody, EmployeProfile } from '../interfaces/employe';
 })
 export class EmployesService {
 
-  private apiUrl = "http://localhost:3000/api/employe"
+  private apiUrl = "http://localhost:3000/api"
   constructor(private http: HttpClient) { }
 
   public getAllEmploye():Observable<Employe[]>{
-    return this.http.get<Employe[]>(`${this.apiUrl}/all`)
+    return this.http.get<Employe[]>(`${this.apiUrl}/employe/all`)
   }
 
   register(body: EmployeBody) {
     console.log("saving...",body)
-    return this.http.post<any>(`${this.apiUrl}/add`, body)
+    return this.http.post<any>(`${this.apiUrl}/employe/add`, body)
   }
 
   getEmployeById(employeId:string):Observable<EmployeProfile>{
-    return this.http.get<EmployeProfile>(`${this.apiUrl}/${employeId}`)
+    return this.http.get<EmployeProfile>(`${this.apiUrl}/employe/${employeId}`)
   }
   updateStatut(employeId:string, statut: { statut: number }):Observable<Employe>{
     console.log(statut)
-    return this.http.put<any>(`${this.apiUrl}/${employeId}`,statut)
+    return this.http.put<any>(`${this.apiUrl}/employe/${employeId}`,statut)
   }
 
 

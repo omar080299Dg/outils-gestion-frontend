@@ -1,0 +1,27 @@
+
+.em-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #669bbc;
+  height: 690px;
+  box-shadow: 3px;
+}
+.em-form .title{
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+
+}
+.em-form .form form{
+  display: grid;
+  grid-template-columns: auto auto ;
+  padding: 5px;
+}
+.em-form .form mat-form-field{
+ margin: 2px;
+}
+.em-form .but{
+  height: 50px;
+}

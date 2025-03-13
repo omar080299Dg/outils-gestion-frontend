@@ -1,8 +1,7 @@
 <div class="employe-navbar">
 <div class="title">Employes</div>
 <div class="search">
-  <input type="text" name="search" placeholder="Entrez le username de l'employé" (keyup)="applyFilter($event)">
-  <button onclick="alert('Hello')">search</button>
+  <input type="text" name="search" placeholder="filtrer" (keyup)="applyFilter($event)">
 </div>
 <div class="actions">
   <button (click)="openDialog()">Ajouter employe</button>

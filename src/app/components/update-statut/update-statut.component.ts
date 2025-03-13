@@ -8,7 +8,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon'
 import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { EmployesService } from '../services/employes.service';
+import { EmployesService } from 'src/app/services/employes.service';
 
 @Component({
   standalone:true,

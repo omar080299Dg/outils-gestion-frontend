@@ -7,7 +7,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { EmModalComponent } from 'src/app/em-modal/em-modal.component';
+import { EmModalComponent } from 'src/app/components/em-modal/em-modal.component';
 import { Router } from '@angular/router';
 
 

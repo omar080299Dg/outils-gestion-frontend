@@ -13,8 +13,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { EmployesService } from '../services/employes.service';
-import { SnackBarService } from '../services/snackbar.service';
+import { EmployesService } from '../../services/employes.service';
+import { SnackBarService } from '../../services/snackbar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
@@ -33,11 +33,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       MatPaginatorModule,
       CommonModule,
       MatFormFieldModule,
-       MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-         MatNativeDateModule,
-         FormsModule,MatIconModule,ReactiveFormsModule,MatSnackBarModule
+      MatInputModule,
+      MatSelectModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      FormsModule,
+      MatIconModule,
+      ReactiveFormsModule,
+      MatSnackBarModule
          ]
 
 

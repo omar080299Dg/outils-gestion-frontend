@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EmployesService } from '../services/employes.service';
-import { EmployeProfile } from '../interfaces/employe';
+import { EmployesService } from '../../services/employes.service';
+import { EmployeProfile } from '../../interfaces/employe';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { UpdateStatutComponent } from '../update-statut/update-statut.component';
 
