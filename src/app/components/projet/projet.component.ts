@@ -87,4 +87,15 @@ export class ProjetComponent implements OnInit {
      console.log("filtering")
     }
 
+    downloadCsv(){
+      this.projetService.donwloadCsV().subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+
+    }
 }

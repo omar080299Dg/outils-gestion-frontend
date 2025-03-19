@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { EmModalComponent } from 'src/app/components/em-modal/em-modal.component';
 import { Router } from '@angular/router';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -25,7 +27,7 @@ import { Router } from '@angular/router';
     MatPaginatorModule,
     MatPaginatorModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,MatFormFieldModule, MatInputModule
   ]
 
 })

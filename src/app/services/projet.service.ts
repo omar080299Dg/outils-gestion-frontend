@@ -13,4 +13,8 @@ export class ProjetService {
    public getAllProjet():Observable<Projet[]>{
     return this.http.get<Projet[]>(`${this.apiUrl}/projet/all`)
       }
+
+    public donwloadCsV(){
+      return this.http.get(`${this.apiUrl}/projet/download`, { responseType: 'blob' })
+    }
 }
