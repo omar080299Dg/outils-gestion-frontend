@@ -9,6 +9,7 @@ import { EmModalComponent } from './components/em-modal/em-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeProfileComponent } from './components/employe-profile/employe-profile.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -29,7 +30,8 @@ import { EmployeProfileComponent } from './components/employe-profile/employe-pr
     EmModalComponent,
     ReactiveFormsModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTooltipModule
 
 ],
   providers: [],

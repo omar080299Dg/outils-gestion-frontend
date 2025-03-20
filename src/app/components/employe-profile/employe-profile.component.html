@@ -1,8 +1,10 @@
 <div class="employe-navbar">
   <div class="title">{{employeeInfo.prenom}}  {{employeeInfo.nom}}</div>
   <div class="actions">
-    <button class="action-but" (click)="openDialog()">Modifier Statut</button>
-    <button class="action-but">Action Z</button>
+    <!-- <button class="action-but" (click)="openDialog()">
+      </button> -->
+      <mat-icon  matTooltip="Modifier Statut" (click)="openDialog()"  aria-hidden="false" class="edit-em" aria-label="Example home icon" fontIcon="border_color"></mat-icon>
+      <mat-icon  matTooltip="Info about the action"  aria-hidden="false" class="other-em" aria-label="Example home icon" fontIcon="apps"></mat-icon>
   </div>
 </div>
 <div class="profile-body">
@@ -13,6 +15,9 @@
   <div class="inf ajust"><span>Ajustement Temps</span><p>{{employeeInfo.ajustement_temps}}</p></div>
   <div class="inf raijust"><span>Rais Ajust Temps</span><p>{{employeeInfo.rais_ajust_temps}}</p></div>
   <div class="inf actif">
-    <span>Statut</span> <p>{{employeeInfo.actif}}</p>
+    <span>Statut</span> <p> <mat-icon
+    [fontIcon]="employeeInfo.actif ? 'check_circle' : 'cancel'"
+    [ngStyle]="{ color: employeeInfo.actif ? 'green' : 'red' }">
+  </mat-icon></p>
   </div>
 </div>

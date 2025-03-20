@@ -2,15 +2,14 @@
   padding: auto;
 }
 .employe-navbar{
-  background-color: #669bbc;
+  background-color: #e0e1dd;
   height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .employe-navbar  .title{
-  font-size: 55px;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 35px;
   font-weight: bold;
 }
 .employe-navbar .actions{
@@ -20,9 +19,9 @@
   width: 20%;
   height: 90%;
 }
-.employe-navbar .actions button {
+/* .employe-navbar .actions button {
   height: 60px;
-  width: 120px;
+  width: 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -31,6 +30,27 @@
   font-weight: bold;
   font-size: 15px;
   padding: 5px;
+} */
+.edit-em{
+  color: orange;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 35px;
+  height: 50px;
+  width: 50px;
+
+}
+.other-em{
+  color: green;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 35px;
+  height: 50px;
+  width: 50px;
 }
 .profile-body{
   background-color: #eef2f4;
@@ -41,14 +61,13 @@
   justify-content: space-around;
 }
 .profile-body .inf span{
-  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   font-weight: bold;
 }
 
 .profile-body .inf p{
   font-size: 15px;
-  color: #669bbc;
+  color: #2196f3;
   font-weight: bold;
   text-align: left;
   width: 50%;

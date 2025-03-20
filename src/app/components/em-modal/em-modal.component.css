@@ -4,14 +4,14 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #669bbc;
+  background-color: #e0e1dd;
   height: 490px;
   box-shadow: 3px;
 }
 .em-form .title{
   font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  color: #2196f3;
 
 }
 .em-form .form form{
@@ -24,4 +24,17 @@
 }
 .em-form .but{
   height: 50px;
+
+}
+.em-form .but button{
+  background-color:   #2196f3;
+
+}
+.save-em-but{
+  color: #2196f3;
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+
 }
