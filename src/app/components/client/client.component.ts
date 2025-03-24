@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UpdateClientComponent } from 'src/app/update-client/update-client.component';
 
 @Component({
   standalone:true,
@@ -134,15 +135,26 @@ applyFilter(event: Event) {
   //   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   // ];
 
-  clientsss = [
-    { nom: "Jean Dupont", email: "jean@example.com", telephone: "123456789" },
-    { nom: "Alice Martin", email: "alice@example.com", telephone: "987654321" },
-  ];
+
   selectedClient: any = null;
 
   selectClient(client: any) {
     this.selectedClient = client;
   }
+
+    openUpdateDialog(clientId: string) {
+     this.dialog.open(UpdateClientComponent,  {
+        width: '300px',
+        height: '290px',
+        panelClass: 'custom-dialog-container',
+        data:{
+          clientId
+        }
+      }),
+      this.dialog.afterAllClosed.subscribe(result =>{
+        window.location.reload();
+      })
+    }
 }
 
 

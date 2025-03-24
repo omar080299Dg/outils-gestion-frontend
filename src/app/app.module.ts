@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployeProfileComponent } from './components/employe-profile/employe-profile.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { UpdateClientComponent } from './update-client/update-client.component';
 
 
 
@@ -19,7 +20,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   declarations: [
     AppComponent,
     EmployeProfileComponent,
-
   ],
   imports: [
     BrowserModule,
