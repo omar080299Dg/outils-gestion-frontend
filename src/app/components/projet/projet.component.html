@@ -1,8 +1,7 @@
 <div class="employe-navbar">
   <div class="title">Projets</div>
   <div class="search">
-    <input type="text" name="search" placeholder="Entrez le username de l'employé" (keyup)="applyFilter($event)">
-    <button onclick="alert('Hello')">search</button>
+    <input type="text" name="search" placeholder="Entrez un mot clé du projet" (keyup)="applyFilter($event)">
   </div>
   <div class="actions">
     <button (click)="downloadCsv()">Export</button>
@@ -10,7 +9,109 @@
   </div>
 
   </div>
-  <div class="projet-table">
+  <mat-sidenav-container class="container">
+    <!-- Menu latéral -->
+    <mat-sidenav mode="side" opened>
+      <mat-toolbar style="color: #2196f3;">Projets</mat-toolbar>
+      <mat-list>
+        <mat-list-item *ngFor="let projet of projets" (click)="selectProjet(projet)">
+          <mat-icon>folder</mat-icon>
+          <span>{{ projet.nom_du_projet }}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+    <!-- Détails du projet -->
+    <mat-sidenav-content class="content">
+      <mat-card *ngIf="selectedProjet" class="card">
+        <mat-card-title>{{ selectedProjet.nom_du_projet }}</mat-card-title>
+        <mat-card-subtitle>Statut : {{ selectedProjet.statut }}</mat-card-subtitle>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+          <!-- 🔹 Infos générales du projet -->
+          <h3>Informations générales</h3>
+          <div class="info"><mat-icon>code</mat-icon> <span>Code : {{ selectedProjet.code_projet }}</span></div>
+          <div class="info"><mat-icon>calendar_today</mat-icon> <span>Date prévue : {{ selectedProjet.date_prevu | date: 'dd/MM/yyyy' }}</span></div>
+          <div class="info"><mat-icon>date_range</mat-icon> <span>Date début : {{ selectedProjet.date_debut | date: 'dd/MM/yyyy' }}</span></div>
+          <div class="info"><mat-icon>event</mat-icon> <span>Date fin : {{ selectedProjet.date_fin | date: 'dd/MM/yyyy' }}</span></div>
+          <div class="info"><mat-icon>attach_money</mat-icon> <span>Montant Soumission : {{ selectedProjet.montant_soumission }}</span></div>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Détails du Projet -->
+          <h3>Détails du projet</h3>
+          <p>{{ selectedProjet.detail }}</p>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Suivi & État du Projet -->
+          <h3>Suivi & État</h3>
+          <div class="info"><mat-icon>visibility</mat-icon> <span>Suivi : {{ selectedProjet.suivi }}</span></div>
+          <div class="info"><mat-icon>check_circle</mat-icon> <span>Code état : {{ selectedProjet.code_etat_proet }}</span></div>
+          <div class="info"><mat-icon>info</mat-icon> <span>Détails état : {{ selectedProjet.detail_etat_projet }}</span></div>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Détails du Client -->
+          <h3>Client</h3>
+          <ng-container *ngIf="selectedClient; else loadingClient">
+            <div class="info"><mat-icon>business</mat-icon> <span>{{ selectedClient.nom }}</span></div>
+            <div class="info"><mat-icon>location_on</mat-icon> <span>{{ selectedClient.adresse }}</span></div>
+            <div class="info"><mat-icon>phone</mat-icon> <span>{{ selectedClient.telephone }}</span></div>
+            <div class="info"><mat-icon>language</mat-icon> <a [href]="selectedClient.site_web" target="_blank">Site Web</a></div>
+          </ng-container>
+          <ng-template #loadingClient><p>Chargement des infos client...</p></ng-template>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Détails de l'Employé -->
+          <h3>Employé Responsable</h3>
+          <ng-container *ngIf="selectedEmploye; else loadingEmploye">
+            <div class="info"><mat-icon>person</mat-icon> <span>{{ selectedEmploye.nom }} {{ selectedEmploye.prenom }}</span></div>
+            <div class="info"><mat-icon>email</mat-icon> <span>{{ selectedEmploye.courriel }}</span></div>
+          </ng-container>
+          <ng-template #loadingEmploye><p>Chargement des infos employé...</p></ng-template>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Résumé du projet -->
+          <h3>Résumé</h3>
+          <p>{{ selectedProjet.resume }}</p>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Documents & Liens -->
+          <h3>Documents</h3>
+          <div class="info"><mat-icon>description</mat-icon> <a [href]="selectedProjet.lien_facture" target="_blank">Facture</a></div>
+          <div class="info"><mat-icon>attach_file</mat-icon> <a [href]="selectedProjet.lien_soumision" target="_blank">Soumission</a></div>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Tags & Catégories -->
+          <h3>Catégories & Tags</h3>
+          <div class="info"><mat-icon>category</mat-icon> <span>{{ selectedProjet.categories }}</span></div>
+          <div class="info"><mat-icon>label</mat-icon> <span>{{ selectedProjet.tags }}</span></div>
+
+          <mat-divider></mat-divider>
+
+          <!-- 🔹 Localisation -->
+          <h3>Localisation</h3>
+          <div class="info"><mat-icon>map</mat-icon> <span>Municipalité : {{ selectedProjet.code_mun }}</span></div>
+          <div class="info"><mat-icon>public</mat-icon> <span>Région : {{ selectedProjet.code_egion }}</span></div>
+          <div class="info"><mat-icon>flag</mat-icon> <span>Unité Géographique : {{ selectedProjet.unite_goe }}</span></div>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
+  <!-- <div class="projet-table">
+
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
 
@@ -157,4 +258,4 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-  </div>
+  </div> -->

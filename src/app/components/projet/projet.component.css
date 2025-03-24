@@ -2,7 +2,7 @@
   padding: auto;
 }
 .employe-navbar{
-  background-color: #669bbc;
+  background-color: #e0e1dd;
   height: 100px;
   display: flex;
   justify-content: space-around;
@@ -10,8 +10,8 @@
 }
 .employe-navbar  .title{
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  color: #2196f3;
 }
 .employe-navbar .search{
   width: 50%;
@@ -59,4 +59,59 @@
 }
 .employe-table .matColumnDef{
   font-weight: bold;
+}
+
+
+.side{
+  height: 300px;
+  width: 500px;
+}
+.container {
+  height: 100vh; /* Assure que le sidenav prend toute la hauteur */
+  display: flex;
+
+}
+
+mat-sidenav {
+  width: 250px; /* Ajuste la largeur du menu latéral */
+  background: #e0e1dd;
+}
+
+mat-sidenav-content {
+  /* padding: 20px; */
+}
+.c-title{
+  color: #2196f3;
+}
+.content{
+  width: 100%;
+}
+.card{
+  padding: 5px;
+
+}
+.client-card {
+  /* max-width: 450px; */
+  /* margin: auto; */
+  /* padding: 16px; */
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
+  /* border-radius: 8px; */
+}
+
+.info {
+  margin: 10px;
+
+}
+
+mat-icon {
+  color: #2196f3;
+}
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

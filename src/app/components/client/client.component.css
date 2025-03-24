@@ -1,60 +1,113 @@
 *{
   padding: auto;
 }
-.client-navbar{
-  background-color: #669bbc;
+.employe-navbar{
+  background-color: #e0e1dd;
   height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.client-navbar  .title{
-  font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
+.employe-navbar  .title{
+  font-size: 2em;
   font-weight: bold;
-}
-.client-navbar .search{
-  width: 50%;
+  color: #2196f3;
 
 }
-.client-navbar .search input{
-  width: 70%;
-  height: 40px;
-  outline: none;
-  border-radius: 5px;
-  border: none;
-  padding: 5px;
+.employe-navbar .search{
+  width: 50%;
+  height: 90px;
+  background-color: #e0e1dd;
+
 }
-.client-navbar .search button{
-  height: 45px;
-  width: 100px;
-  outline: none;
-  text-decoration: none;
-  text-align: center;
-  margin-left: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 18px;
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #e0e1dd;
+  height: 80%;
   padding: 10px;
+
+}
+
+.example-full-width {
+  width: 100%;
+  background-color: #e0e1dd;
+
+
+}
+
+.actions{
+  height: 50px;
+  width: 100px;
+  margin-left: 0px;
+}
+
+.add-em-icon{
+  color: #2196f3;
+  height: 100px;
+  font-size: 40px;
+  width: 100px;
   cursor: pointer;
 
-
+}
+.side{
+  height: 300px;
+  width: 500px;
+}
+.container {
+  height: 100vh; /* Assure que le sidenav prend toute la hauteur */
+  display: flex;
 
 }
-.client-navbar .actions button{
-  outline: none;
+
+mat-sidenav {
+  width: 250px; /* Ajuste la largeur du menu latéral */
+  background: #e0e1dd;
+}
+
+mat-sidenav-content {
+  /* padding: 20px; */
+}
+.c-title{
+  color: #2196f3;
+}
+.content{
+  width: 100%;
+}
+.card{
+  padding: 5px;
+
+}
+.client-card {
+  /* max-width: 450px; */
+  /* margin: auto; */
+  /* padding: 16px; */
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
+  /* border-radius: 8px; */
+}
+
+.info {
+  margin: 10px;
+
+}
+
+mat-icon {
+  color: #2196f3;
+}
+
+a {
+  color: #2196f3;
   text-decoration: none;
-  text-align: center;
-  margin-left: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 18px;
-  height: 40px;
-  padding: 10px;
-
 }
 
-.client-table {
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* .client-table {
   font-size: 40px;
   padding: 40px;
 }
@@ -67,9 +120,9 @@
   width: 550px;
   max-width: 100%;
   overflow: auto;
-}
+} */
 
-table {
+/* table {
   width: 800px;
 }
 
@@ -88,4 +141,4 @@ th.mat-column-position, td.mat-column-position {
 
 .mat-mdc-table-sticky-border-elem-left {
   border-right: 1px solid #e0e0e0;
-}
+} */

@@ -28,7 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     MatPaginatorModule,
     CommonModule,
-    MatDialogModule,MatFormFieldModule, MatInputModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule
   ]
 

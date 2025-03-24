@@ -5,8 +5,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Projet } from '../../interfaces/Projet';
 import { ProjetService } from '../../services/projet.service';
+import { MatIconModule } from '@angular/material/icon';
+import { EmployesService } from 'src/app/services/employes.service';
+import { ClientService } from 'src/app/services/client.service';
 
 
 @Component({
@@ -20,12 +27,17 @@ import { ProjetService } from '../../services/projet.service';
     MatPaginatorModule,
     MatPaginatorModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+       MatSidenavModule,
+          MatListModule,
+          MatCardModule,
+          MatToolbarModule,      MatIconModule,
+
   ]
 })
 export class ProjetComponent implements OnInit {
   projets:Projet[]=[]
-  constructor(private projetService:ProjetService){}
+  constructor(private projetService:ProjetService, private employeService: EmployesService, private clientService:ClientService){}
 
 
   displayedColumns: string[] = [
@@ -98,4 +110,23 @@ export class ProjetComponent implements OnInit {
       });
 
     }
-}
+    selectedProjet: any = null;
+    selectedEmploye: any = null;
+    selectedClient: any = null;
+    selectProjet(projet: any) {
+      this.selectedProjet = projet;
+
+      // Charger l'employé
+      this.employeService.getEmployeById(projet.id_employe).subscribe(
+        (data) => (this.selectedEmploye = data),
+        (error) => console.error('Erreur chargement employé', error)
+      );
+
+      // Charger le client
+      this.clientService.getClientByID(projet.id_client).subscribe(
+        (data) => (this.selectedClient = data),
+        (error) => console.error('Erreur chargement client', error)
+      );
+    }
+  }
+

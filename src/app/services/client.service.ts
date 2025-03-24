@@ -15,7 +15,7 @@ export class ClientService {
   }
 
     getClientByID(clientId:string):Observable<Client>{
-      return this.http.get<Client>(`${this.apiUrl}/${clientId}`)
+      return this.http.get<Client>(`${this.apiUrl}/client/${clientId}`)
     }
 
      addClient(body: Client) {

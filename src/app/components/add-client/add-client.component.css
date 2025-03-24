@@ -4,13 +4,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #669bbc;
+  background-color: #e0e1dd;
   height: 690px;
   box-shadow: 3px;
 }
 .em-form .title{
   font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 
 }
