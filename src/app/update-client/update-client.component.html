@@ -1,1 +1,62 @@
-<p>update-client works!</p>
+<div class="em-form">
+  <div class="title">
+    <p>Modifier  Client </p>
+  </div>
+  <div class="form">
+    <form   [formGroup]="registerForm" (keydown.tab)="$event.stopPropagation()" (keydown.shift.tab)="$event.stopPropagation()">
+
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom_du_client" required>
+      </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nom du Contact</mat-label>
+          <input matInput formControlName="nom_contact" required>
+        </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Categorie</mat-label>
+        <input matInput formControlName="categorie_client" required>
+      </mat-form-field>
+
+        <mat-form-field>
+        <mat-label>Courriel</mat-label>
+        <input matInput formControlName="courriel" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Courriel2</mat-label>
+        <input type="text"  matInput formControlName="courriel2" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Forme Adhésion</mat-label>
+        <input matInput formControlName="forme_adhesion" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Année Adhésion</mat-label>
+        <input matInput formControlName="annee_adhesion" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sie Web</mat-label>
+        <input matInput formControlName="site_web" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>No Tel</mat-label>
+        <input matInput formControlName="no_tel" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="adresse" >
+      </mat-form-field>
+
+
+    </form>
+
+
+  </div>
+  <div class="but">
+    <button mat-raised-button (click)="updateClient()"> Enregister
+    </button>
+
+  </div>
+</div>

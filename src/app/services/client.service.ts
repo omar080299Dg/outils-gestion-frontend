@@ -22,4 +22,8 @@ export class ClientService {
         console.log("saving...",body)
         return this.http.post<any>(`${this.apiUrl}/client/add`, body)
       }
+
+      updateClient(clientId: string, updates: Partial<any>): Observable<any> {
+        return this.http.put(`${this.apiUrl}/client/${clientId}`, updates);
+      }
 }
