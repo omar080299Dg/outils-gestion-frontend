@@ -123,8 +123,12 @@ export class ProjetComponent implements OnInit {
       );
 
       // Charger le client
+      console.log(projet.id_client)
       this.clientService.getClientByID(projet.id_client).subscribe(
-        (data) => (this.selectedClient = data),
+
+        (data) => {
+
+          this.selectedClient = data},
         (error) => console.error('Erreur chargement client', error)
       );
     }

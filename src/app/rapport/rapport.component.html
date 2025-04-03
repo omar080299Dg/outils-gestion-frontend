@@ -1,0 +1,43 @@
+<div class="rapport-head">
+  <div class="title">Rapports</div>
+  <form class="selectors"  [formGroup]="registerForm">
+
+<mat-form-field>
+  <mat-label>Choose an option</mat-label>
+  <mat-select formControlName="id_employe">
+    <mat-option *ngFor="let employe of this.employees" [value]="employe.id_employe" >
+      {{ employe.prenom }} {{ employe.nom }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+    <div class="calendar">
+      <mat-form-field>
+        <mat-label>Choose a start date</mat-label>
+        <input matInput [matDatepicker]="startPicker" formControlName="start">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Choose an end date</mat-label>
+        <input matInput [matDatepicker]="endPicker" formControlName="end">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <button class="filtrer" (click)="filtrer()">filtrer</button>
+
+    </div>
+
+  </form>
+</div>
+<div class="rapport-body">
+  <div class="location">
+    <h2> Ratio Télétravail/Bureau</h2>
+    <h4>Bureau {{this.percent}} %  </h4>
+    <mat-progress-bar mode="determinate" value={{this.ratio.bureau}} class="progress"></mat-progress-bar>
+
+  </div>
+</div>

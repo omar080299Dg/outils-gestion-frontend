@@ -2,7 +2,7 @@
   padding: auto;
 }
 .employe-navbar{
-  background-color: #e0e1dd;
+  background-color: #d9dcd6;
   height: 100px;
   display: flex;
   justify-content: space-around;
@@ -11,7 +11,7 @@
 .employe-navbar  .title{
   font-size: 40px;
   font-weight: bold;
-  color: #2196f3;
+  /* color: #22577a; */
 }
 .employe-navbar .search{
   width: 50%;
@@ -74,14 +74,42 @@
 
 mat-sidenav {
   width: 250px; /* Ajuste la largeur du menu latéral */
-  background: #e0e1dd;
+  background: #d9dcd6;
 }
 
 mat-sidenav-content {
   /* padding: 20px; */
 }
+mat-card-title {
+  word-wrap: break-word; /* Coupe les mots longs */
+  white-space: normal; /* Permet le retour à la ligne */
+  overflow-wrap: break-word; /* Coupe proprement les longues chaînes */
+}
+.part-1{
+  margin-top: 10px;
+  background-color: #d9dcd6; /* Couleur de fond */
+ /* Espace intérieur pour respirer */
+  border-radius: 10px; /* Bords arrondis pour un effet doux */
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+.part-1:hover {
+  transform: translateY(-3px); /* Légère élévation au survol */
+  box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
+}
+.part-1 .title{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 50px;
+  background-color: #343a40;
+  max-width: 100%;
+  font-size: 20px;
+  color: white;
+  padding: 6px;
+  border-radius: 10px
+}
 .c-title{
-  color: #2196f3;
+  /* color: #22577a; */
 }
 .content{
   width: 100%;
@@ -99,16 +127,37 @@ mat-sidenav-content {
 }
 
 .info {
-  margin: 10px;
+  display: flex;
+  align-items: center; /* Aligner verticalement */
+  gap: 5px; /* Espacement entre l'icône et la valeur */
+  white-space: nowrap;
+  margin-left: 10px;
+  flex-wrap: wrap; /* Permet au texte de passer à la ligne si nécessaire */
+  max-width: 100%; /* Empêche le dépassement */
+  overflow-wrap: break-word; /* Coupe les mots longs proprement */
+  word-break: break-word;
 
+
+}
+.info span {
+  word-wrap: break-word; /* Coupe les mots longs si besoin */
+  overflow-wrap: break-word; /* Alternative pour la compatibilité */
+  white-space: normal; /* Permet le retour à la ligne */
+  display: inline-block; /* Nécessaire pour que le texte s’adapte */
+  max-width: 100%; /* Pour éviter les dépassements */
 }
 
 mat-icon {
-  color: #2196f3;
+
+  font-size: 30px;
+  font-weight: bold;
+  height: 50px;
+  width: 50px;
+
 }
 
 a {
-  color: #2196f3;
+  /* color: #1d3557; */
   text-decoration: none;
 }
 

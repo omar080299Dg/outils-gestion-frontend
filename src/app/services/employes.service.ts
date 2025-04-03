@@ -16,6 +16,10 @@ export class EmployesService {
     return this.http.get<Employe[]>(`${this.apiUrl}/employe/all`)
   }
 
+  public getActiveEmploye():Observable<Employe[]>{
+    return this.http.get<Employe[]>(`${this.apiUrl}/employe/active`)
+  }
+
   register(body: EmployeBody) {
     console.log("saving...",body)
     return this.http.post<any>(`${this.apiUrl}/employe/add`, body)
