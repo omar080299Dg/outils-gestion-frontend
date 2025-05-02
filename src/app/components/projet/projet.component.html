@@ -10,7 +10,7 @@
 
   </div>
   <mat-sidenav-container class="container">
-    <!-- Menu latéral -->
+
     <mat-sidenav mode="side" opened>
       <mat-toolbar>Projets</mat-toolbar>
       <mat-list>
@@ -20,8 +20,130 @@
       </mat-list>
     </mat-sidenav>
 
-    <!-- Détails du projet -->
     <mat-sidenav-content class="content">
+      <mat-card *ngIf="selectedProjet" class="card">
+
+          <div class="card-grid">
+
+            <!-- Carte Projet -->
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>{{ selectedProjet.nom_du_projet }}</mat-card-title>
+                <mat-card-subtitle>
+                  {{ getTypeApproche(selectedProjet.type_projet) }} – {{ generateIdentifiantProjet(selectedProjet.type_projet, selectedProjet.identifiant) }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong >Code projet :</strong> {{ selectedProjet.code_projet }}</p>
+                <p><strong>Détail :</strong> {{ selectedProjet.detail }}</p>
+                <p><strong>Résumé :</strong> {{ selectedProjet.resume }}</p>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Carte Suivi & État -->
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Suivi & État</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Suivi :</strong> {{ selectedProjet.suivi }}</p>
+                <p><strong>Statut  : </strong> <span class="badge" [ngClass]="getStatutClass(selectedProjet.statut)">
+                  {{ getLibelleStatut(selectedProjet.statut) }}
+                </span></p>
+                <p><strong>État :</strong> {{ selectedProjet.code_etat_projet }}</p>
+                <p><strong>Détail État :</strong> {{ selectedProjet.detail_etat_projet }}</p>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Carte Employé Responsable -->
+            <mat-card *ngIf="selectedEmploye" class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Employé Responsable</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Nom :</strong> {{ selectedEmploye.nom }} {{ selectedEmploye.prenom }}</p>
+                <p><strong>Courriel :</strong> {{ selectedEmploye.courriel }}</p>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Carte Client -->
+            <mat-card *ngIf="selectedClient" class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Client</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Nom :</strong> {{ selectedClient.nom_du_client }}</p>
+                <p><strong>Adresse :</strong> {{ selectedClient.adresse }}</p>
+                <p><strong>Téléphone :</strong> {{ selectedClient.telephone }}</p>
+                <p><strong>Site web :</strong>
+                  <a [href]="selectedClient.site_web" target="_blank">{{ selectedClient.site_web }}</a>
+                </p>
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Plannification</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Durée approximative (jth):</strong> {{ selectedProjet.duree_prevu }}</p>
+                <p><strong>Montant de la soumission ($):{{ selectedProjet.montant_soumission }} </strong> </p>
+                <p><strong>Date Debut :</strong> {{ selectedProjet.date_debut | date:'yyyy-MM-dd'  }}</p>
+                <p><strong>Date Fin :</strong> {{ selectedProjet.date_fin | date:'yyyy-MM-dd'  }}</p>
+              </mat-card-content>
+            </mat-card>
+            <!-- Carte Documents -->
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Documents</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Facturé :</strong>
+                  <mat-checkbox [checked]="selectedProjet.facture" ></mat-checkbox>
+                </p>
+                <p><strong>Soumission :</strong>
+                  <a [href]="selectedProjet.lien_soumision" target="_blank">Voir la soumission</a>
+                </p>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Carte Catégories & Tags -->
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Catégories & Tags</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Catégories :</strong> {{ selectedProjet.categories }}</p>
+                <p><strong>Tags :</strong> {{ selectedProjet.tags }}</p>
+              </mat-card-content>
+            </mat-card>
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Publication</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Site web :</strong>   <a [href]="selectedProjet.site_web" target="_blank">{{selectedProjet.nom_du_projet}}</a></p>
+                <p><strong>Publication :</strong> <mat-checkbox [checked]="selectedProjet.publication" ></mat-checkbox></p>
+              </mat-card-content>
+            </mat-card>
+            <!-- Carte Localisation -->
+            <mat-card class="custom-card">
+              <mat-card-header>
+                <mat-card-title>Localisation</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Municipalité :</strong> {{ getNomMRC(selectedProjet.code_mrc) }}</p>
+                <p><strong>Région :</strong> {{ getNomRegion(selectedProjet.code_region) }}</p>
+                <p><strong>Unité géographique :</strong> {{ getNomUniteGeo(selectedProjet.unite_geo) }}</p>
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+
+
+
+      </mat-card>
+    </mat-sidenav-content>
+    <!-- <mat-sidenav-content class="content">
       <mat-card *ngIf="selectedProjet" class="card">
         <mat-card-title>{{ selectedProjet.nom_du_projet }}</mat-card-title>
         <mat-card-subtitle>Statut : {{ selectedProjet.statut }}</mat-card-subtitle>
@@ -29,19 +151,50 @@
         <mat-divider></mat-divider>
 
         <mat-card-content>
-          <!-- 🔹 Infos générales du projet -->
+
           <div class="part-1">
-            <div class="title">Informations générales</div>
-          <div class="info"><mat-icon   >code</mat-icon>   {{ selectedProjet.code_projet }}</div>
-          <div class="info"><mat-icon  >calendar_today</mat-icon> <span>  {{ selectedProjet.date_prevu | date: 'dd/MM/yyyy' }}</span></div>
-          <div class="info"><mat-icon  >date_range</mat-icon> <span>  {{ selectedProjet.date_debut | date: 'dd/MM/yyyy' }}</span></div>
-          <div class="info"><mat-icon  >event</mat-icon> <span>  {{ selectedProjet.date_fin | date: 'dd/MM/yyyy' }}</span></div>
-          <div class="info"><mat-icon  >attach_money</mat-icon> <span> {{ selectedProjet.montant_soumission }}</span></div>
+            <div class="title">Code du projet</div>
+          <div class="info"> <span class="code"> #{{ selectedProjet.code_projet }}</span></div>
+
+
+          </div>
+          <mat-divider></mat-divider>
+          <div class="part-1">
+            <div class="title">Type d'approche </div>
+          <div class="info"> <span class="dtatu">{{ getTypeApproche(selectedProjet.type_projet) }}</span></div>
+
+          </div>
+
+          <mat-divider></mat-divider>
+          <div class="part-1">
+            <div class="title">Indentifiant du projet </div>
+          <div class="info"> <span class="id_projet">{{ generateIdentifiantProjet(selectedProjet.type_projet, selectedProjet.identifiant)}}</span></div>
+
+          </div>
+          <mat-divider></mat-divider>
+          <div class="part-1">
+            <div class="title">Chargé du projet </div>
+            <ng-container *ngIf="selectedEmploye; else loadingEmploye">
+              <div class="info"> <span>{{ selectedEmploye.nom }} {{ selectedEmploye.prenom }}</span></div>
+
+            </ng-container>
+            <ng-template #loadingEmploye><p>Chargement des infos employé...</p></ng-template>
+
+          </div>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <div class="part-1">
+            <div class="title"></div>
+            <ng-container *ngIf="selectedEmploye; else loadingEmploye">
+              <div class="info"> <span>{{ selectedEmploye.nom }} {{ selectedEmploye.prenom }}</span></div>
+
+            </ng-container>
+            <ng-template #loadingEmploye><p>Chargement des infos employé...</p></ng-template>
 
           </div>
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Détails du Projet -->
+
           <div class="part-1">
             <div class="title">Détails du projet</div>
           <p>{{ selectedProjet.detail }}</p>
@@ -49,7 +202,6 @@
 
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Suivi & État du Projet -->
           <div class="part-1">
             <div class="title">Suivi & État</div>
           <div class="info"><mat-icon>visibility</mat-icon> <span> {{ selectedProjet.suivi }}</span></div>
@@ -59,7 +211,7 @@
           </div>
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Détails du Client -->
+
           <div class="part-1">
             <div class="title">Client</div>
           <ng-container *ngIf="selectedClient; else loadingClient">
@@ -73,7 +225,7 @@
 
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Détails de l'Employé -->
+
          <div class="part-1">
           <div class="title">Employé Responsable</div>
           <ng-container *ngIf="selectedEmploye; else loadingEmploye">
@@ -85,7 +237,7 @@
          </div>
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Résumé du projet -->
+
           <div class="part-1">
             <div class="title">Résumé</div>
           <p>{{ selectedProjet.resume }}</p>
@@ -93,7 +245,7 @@
 
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Documents & Liens -->
+
           <div class="part-1">
             <div class="title">Documents</div>
           <div class="info"><mat-icon>description</mat-icon> <a [href]="selectedProjet.lien_facture" target="_blank">Facture</a></div>
@@ -102,7 +254,7 @@
           </div>
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Tags & Catégories -->
+
           <div class="part-1">
             <div class="title">Catégories & Tags</div>
           <div class="info"><mat-icon>category</mat-icon> <span>{{ selectedProjet.categories }}</span></div>
@@ -111,7 +263,7 @@
           </div>
           <mat-divider></mat-divider>
 
-          <!-- 🔹 Localisation -->
+
           <div class="part-1">
             <div class="title">Localisation</div>
           <div class="info"><mat-icon>map</mat-icon> <span>{{ selectedProjet.code_mun }}</span></div>
@@ -121,158 +273,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-    </mat-sidenav-content>
+    </mat-sidenav-content> -->
   </mat-sidenav-container>
 
 
-
-
-  <!-- <div class="projet-table">
-
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="id_projet">
-          <th mat-header-cell *matHeaderCellDef> ID Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.id_projet}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="id_emloye">
-          <th mat-header-cell *matHeaderCellDef> Employé ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.id_emloye}} </td>
-        </ng-container>
-        <ng-container matColumnDef="id_client">
-          <th mat-header-cell *matHeaderCellDef> Client ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.id_client}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="nom_du_projet">
-          <th mat-header-cell *matHeaderCellDef> Nom du Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.nom_du_projet}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="code_projet">
-          <th mat-header-cell *matHeaderCellDef> Code Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.code_projet}} </td>
-        </ng-container>
-        <ng-container matColumnDef="code_etat_projet">
-          <th mat-header-cell *matHeaderCellDef> Code Etat Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.code_etat_projet}} </td>
-        </ng-container>
-        <ng-container matColumnDef="detail_etat_projet">
-          <th mat-header-cell *matHeaderCellDef> Detail Etat Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.detail_etat_projet}} </td>
-        </ng-container>
-        <ng-container matColumnDef="code_mun">
-          <th mat-header-cell *matHeaderCellDef> Porjet Mun  </th>
-          <td mat-cell *matCellDef="let element"> {{element.code_mun}} </td>
-        </ng-container>
-        <ng-container matColumnDef="type_projet">
-          <th mat-header-cell *matHeaderCellDef>Type Projet</th>
-          <td mat-cell *matCellDef="let element"> {{element.type_projet}} </td>
-        </ng-container>
-        <ng-container matColumnDef="code_mrc">
-          <th mat-header-cell *matHeaderCellDef> Code MRC  </th>
-          <td mat-cell *matCellDef="let element"> {{element.code_mrc}} </td>
-        </ng-container>
-        <ng-container matColumnDef="code_region">
-          <th mat-header-cell *matHeaderCellDef> Code RE  </th>
-        <td mat-cell *matCellDef="let element"> {{element.code_region}} </td>
-        </ng-container>
-        <ng-container matColumnDef="zgie">
-          <th mat-header-cell *matHeaderCellDef> ZGIE  </th>
-        <td mat-cell *matCellDef="let element"> {{element.zgie}} </td>
-        </ng-container>
-        <ng-container matColumnDef="unite_geo">
-          <th mat-header-cell *matHeaderCellDef> Uité Geo  </th>
-        <td mat-cell *matCellDef="let element"> {{element.unite_geo}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="statut">
-          <th mat-header-cell *matHeaderCellDef> Statut </th>
-          <td mat-cell *matCellDef="let element"> {{element.statut}} </td>
-        </ng-container>
-        <ng-container matColumnDef="carte_projet">
-          <th mat-header-cell *matHeaderCellDef> Carte Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.carte_projet}} </td>
-        </ng-container>
-        <ng-container matColumnDef="identifiant">
-          <th mat-header-cell *matHeaderCellDef>identifiant </th>
-          <td mat-cell *matCellDef="let element"> {{element.identifiant}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date_prevue">
-          <th mat-header-cell *matHeaderCellDef> Date Prévue </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_prevue}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="detail">
-          <th mat-header-cell *matHeaderCellDef> Détail </th>
-          <td mat-cell *matCellDef="let element"> {{element.detail}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="suivi">
-          <th mat-header-cell *matHeaderCellDef> Suivi </th>
-          <td mat-cell *matCellDef="let element"> {{element.suivi}} </td>
-        </ng-container>
-        <ng-container matColumnDef="facture">
-          <th mat-header-cell *matHeaderCellDef>Facture </th>
-          <td mat-cell *matCellDef="let element"> {{element.facture}} </td>
-        </ng-container>
-        <ng-container matColumnDef="lien_facture">
-          <th mat-header-cell *matHeaderCellDef> Lien Facture </th>
-          <td mat-cell *matCellDef="let element"> {{element.lien_facture}} </td>
-        </ng-container>
-        <ng-container matColumnDef="tags">
-          <th mat-header-cell *matHeaderCellDef>Tags </th>
-          <td mat-cell *matCellDef="let element"> {{element.tags}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="lien_soumission">
-          <th mat-header-cell *matHeaderCellDef> Lien Soumission </th>
-          <td mat-cell *matCellDef="let element"> {{element.len_soumission}} </td>
-        </ng-container>
-        <ng-container matColumnDef="montant_soumission">
-          <th mat-header-cell *matHeaderCellDef> Montant Soumission </th>
-          <td mat-cell *matCellDef="let element"> {{element.montant_soumission}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date_debut">
-          <th mat-header-cell *matHeaderCellDef> Date Début </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_debut | date:'yyyy-MM-dd'}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date_fin">
-          <th mat-header-cell *matHeaderCellDef> Date Fin </th>
-          <td mat-cell *matCellDef="let element"> {{element.date_fin | date:'yyyy-MM-dd'}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="site_web">
-          <th mat-header-cell *matHeaderCellDef> Site Web </th>
-          <td mat-cell *matCellDef="let element"> {{element.site_web}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="resume">
-          <th mat-header-cell *matHeaderCellDef> Résumé </th>
-          <td mat-cell *matCellDef="let element"> {{element.resume}} </td>
-        </ng-container>
-        <ng-container matColumnDef="etat_projet">
-          <th mat-header-cell *matHeaderCellDef> Etat Projet </th>
-          <td mat-cell *matCellDef="let element"> {{element.etat_projet}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="publication">
-          <th mat-header-cell *matHeaderCellDef>Publication </th>
-          <td mat-cell *matCellDef="let element"> {{element.publication}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="categories">
-          <th mat-header-cell *matHeaderCellDef>Categorie </th>
-          <td mat-cell *matCellDef="let element"> {{element.categories}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-  </div> -->
