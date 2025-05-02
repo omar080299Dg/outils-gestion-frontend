@@ -12,6 +12,7 @@ import { EmployeProfileComponent } from './components/employe-profile/employe-pr
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UpdateClientComponent } from './update-client/update-client.component';
 import { RapportComponent } from './rapport/rapport.component';
+import { MaintenancePopupComponent } from './maintenance-popup/maintenance-popup.component';
 
 
 
@@ -21,6 +22,7 @@ import { RapportComponent } from './rapport/rapport.component';
   declarations: [
     AppComponent,
     EmployeProfileComponent,
+    MaintenancePopupComponent
   ],
   imports: [
     BrowserModule,
