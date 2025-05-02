@@ -14,6 +14,11 @@ import { ProjetService } from '../../services/projet.service';
 import { MatIconModule } from '@angular/material/icon';
 import { EmployesService } from 'src/app/services/employes.service';
 import { ClientService } from 'src/app/services/client.service';
+  import { MatDividerModule } from '@angular/material/divider';
+  import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Mrc, Region, UniteGeo } from 'src/app/interfaces/Mrc';
+import { consumerDestroy } from '@angular/core/primitives/signals';
+
 
 
 @Component({
@@ -31,12 +36,18 @@ import { ClientService } from 'src/app/services/client.service';
        MatSidenavModule,
           MatListModule,
           MatCardModule,
-          MatToolbarModule,      MatIconModule,
+          MatToolbarModule,
+            MatIconModule,
+            MatDividerModule,
+            MatCheckboxModule,
 
   ]
 })
 export class ProjetComponent implements OnInit {
   projets:Projet[]=[]
+  mrcList:Mrc[]=[];
+  regionList:Region[]=[];
+  uniteGeoList:UniteGeo[]=[];
   constructor(private projetService:ProjetService, private employeService: EmployesService, private clientService:ClientService){}
 
 
@@ -75,6 +86,7 @@ export class ProjetComponent implements OnInit {
 
 
     ngOnInit(): void {
+      this.loadLocalisationData();
         this.getAllProject()
 
     }
@@ -132,5 +144,84 @@ export class ProjetComponent implements OnInit {
         (error) => console.error('Erreur chargement client', error)
       );
     }
+
+    getTypeApproche(stat: number): string {
+      switch (stat) {
+        case 0:
+          return 'Développement interne';
+        case 1:
+          return 'Soumission';
+        case 2:
+          return 'Partenariat';
+        default:
+          return 'Inconnu';
+      }
+    }
+
+    generateIdentifiantProjet(type: number, idProjet: string): string {
+      console.log(type,idProjet )
+
+      const firstLetter = this.getTypeApproche(type).charAt(0).toUpperCase();
+        return `${firstLetter}${idProjet}`;
+    }
+    loadLocalisationData() {
+      this.projetService.getAllMrc().subscribe(data => {
+        this.mrcList = data;
+      });
+
+      this.projetService.getAllRegion().subscribe(data => {
+        this.regionList = data;
+      });
+
+      this.projetService.getAllUniteGO().subscribe(data => {
+        this.uniteGeoList = data;
+      });
+    }
+    getNomMRC(codes: string): string {
+      console.log("#################### mrc",codes)
+      if (!codes) return 'Non défini';
+
+      return codes
+        .split(',')
+        .map(code => {
+          const mrc = this.mrcList.find(m => m.code_mrc === Number(code.trim()));
+          return mrc ? mrc.nom : `Code inconnu (${code})`;
+        })
+        .join(', ');
+    }
+    getNomRegion(code: number): string {
+      console.log("######### region", code)
+      const region = this.regionList.find(r => r.code_region === code);
+      return region ? region.nom : 'Non défini';
+    }
+
+    getNomUniteGeo(id: number): string {
+      console.log("######### ugeo", id)
+      const unite = this.uniteGeoList.find(u => u.id === id);
+      return unite ? unite.nom : 'Non défini';
+    }
+    statutProjetList: { [key: string]: string } = {
+      "0": "Projet annulé",
+      "1": "Projet potentiel",
+      "2": "Projet en soumission",
+      "3": "Projet en cours",
+      "4": "Projet terminé"
+    };
+
+    getLibelleStatut(code: string | number): string {
+      return this.statutProjetList[code] || 'Statut inconnu';
+    }
+    getStatutClass(code: string | number): string {
+      switch (code) {
+        case "1": return 'badge-gray';      // Projet potentiel
+        case "2": return 'badge-orange';    // En soumission
+        case "3": return 'badge-blue';      // En cours
+        case "4": return 'badge-green';     // Terminé
+        case "0": return 'badge-red';       // Annulé
+        default: return 'badge-default';
+      }
+    }
+
+
   }
 
